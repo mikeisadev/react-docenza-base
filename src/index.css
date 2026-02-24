@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+body {
+    @apply bg-linear-to-r from-cyan-500 to-blue-500;
+}
+
+a {
+    @apply !text-white;
+}
