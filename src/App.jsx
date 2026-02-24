@@ -26,18 +26,35 @@ function App() {
    */
   useEffect(() => {
 
+    /**
+     * Attento che il timeout è per creare un ritardo/delay
+     * artificiale, realmente non è utile
+     */
     setTimeout(
       () => {
-        fetch('https://dummyjson.com/users')
+
+        // Fetch users (ottieni utenti)
+        fetch('https://dummyjson.com/users?limit=10')
           .then(response => response.json())
           .then(data => {
-            console.log(data);
+            console.log("UTENTI", data);
 
             const listaUtenti = data.users;
 
             inserisciUtenti(listaUtenti);
-        })
-      }, 5000
+        });
+
+        // Fetch products (ottieni prodotti)
+        fetch('https://dummyjson.com/products?limit=10')
+          .then(response => response.json())
+          .then(data => {
+            console.log("PRODOTTI", data);
+
+            const listaProdotti = data.products;
+
+            inserisciProdotti(listaProdotti);
+          })
+      }, 2000
     );
 
   }, []);
@@ -60,6 +77,28 @@ function App() {
    * per sovrascrivere quella stessa memoria.
    */
   const [utenti, inserisciUtenti] = useState(null);
+  const [prodotti, inserisciProdotti] = useState(null);
+
+  /**
+   * Definiamo le colonne per il mio componente table.
+   * 
+   * Usiamo variabili normali.
+   */
+  const confUtenti = {
+    id: "ID",
+    firstName: "Nome",
+    lastName: "Cognome",
+    gender: "Genere",
+    university: "Università"
+  };
+
+  const confProdotti = {
+    id: "ID",
+    title: "Titolo",
+    description: "Descrizione",
+    brand: "Brand/Marca",
+    sku: "SKU"
+  }
 
   /**
    * Qui ritorniamo DOM Virtuale / JSX
@@ -71,11 +110,28 @@ function App() {
    */
   return (
     <div className="p-4">
+      { /** Lista utenti */ }
       <div className="text-center mt-[30px] mb-[20px]">
         <h1 className="font-bold text-3xl">Gestione utenti</h1>
       </div>
 
-      {utenti ? <Table utenti={utenti}/> : <Spinner loadText="Caricamento in corso dei prodotti..."/>} 
+      {
+        utenti ? 
+        <Table configurazione={confUtenti} dati={utenti} /> 
+        : 
+        <Spinner loadText="Caricamento in corso dei prodotti..."/>}
+
+      { /** Lista prodotti */ }
+      <div className="text-center mt-[30px] mb-[20px]">
+        <h1 className="font-bold text-3xl">Gestione prodotti</h1>
+      </div>
+
+      {
+        utenti ? 
+        <Table configurazione={confProdotti} dati={prodotti} /> 
+        : 
+        <Spinner loadText="Caricamento in corso dei prodotti..."/>
+      } 
     </div>
   )
 }
