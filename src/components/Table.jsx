@@ -1,8 +1,23 @@
 
 const Table = ({ configurazione, dati }) => {
 
+    /**
+     * L'oggetto di "configurazione" ha:
+     * - nelle chiavi la mappatura dell'oggetto di risposta dal server
+     * - nei valori ha le etichette delle colonne della tabella
+     * 
+     * Quindi uso delle funzioni built-in di Javascript per estrarre
+     * chiavi e valori.
+     * 
+     * NOTA: per me i valori sono le "colonne" della tabella
+     * APPROFONDIMENTO: rivedi la struttura degli oggetti esportati
+     * dal file src/data/tabelle.js
+     */
     const colonne = Object.values(configurazione);
     const chiavi = Object.keys(configurazione);
+
+    console.log("COLONNE", colonne);
+    console.log("CHIAVI", chiavi);
 
     return (
         <div className="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-lg bg-clip-border">
