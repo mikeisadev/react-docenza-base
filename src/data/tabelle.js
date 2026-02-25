@@ -13,6 +13,7 @@
 export const confUtenti = {
     id: "ID",
     username: "Nome utente",
+    eyeColor: "Colore degli occhi",
     firstName: "Nome",
     lastName: "Cognome",
     gender: "Genere",

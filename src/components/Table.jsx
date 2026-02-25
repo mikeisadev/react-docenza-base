@@ -48,7 +48,7 @@ const Table = ({ configurazione, dati }) => {
                                     <tr className="hover:bg-slate-50">
 
                                         {
-                                            chiavi.map(chiave => {
+                                            chiavi?.map(chiave => {
                                                 return (
                                                     <td className="p-4">
                                                         <p className="text-sm font-bold">
@@ -61,7 +61,7 @@ const Table = ({ configurazione, dati }) => {
 
                                     </tr>
                                 );
-                        }) : <p>Nessun utente caricato</p>
+                        }) : <p>Nessun utente disponibile</p>
                     }
                 </tbody>
             </table>
