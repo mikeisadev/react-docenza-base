@@ -2,7 +2,7 @@
 
 In questa repository è possibile trovare la raccolta di vari progetti e spiegazioni base su ReactJS
 
-# Come navigare questa repository
+## Come navigare questa repository
 
 Per navigare questa repository devi basarti su tutte le cartelle che vedi.
 
