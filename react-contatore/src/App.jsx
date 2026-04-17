@@ -3,10 +3,9 @@ import Header from "./components/Header";
 
 function App() {
   const nomeSito = "Contatore React";
+const limiteMassimo = 15;
 
-  const limiteMassimo = 15;
-
-  const [contatore, modificaContatore] = useState(0);
+const [contatore, modificaContatore] = useState(0);
 
   return (
     <>
