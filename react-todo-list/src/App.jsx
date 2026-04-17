@@ -1,13 +1,8 @@
 import { useState } from "react";
 
 function App() {
-  const listaCoseDaFare = [
-    { nome: "Fare la spesa" },
-    { nome: "Studiare le basi di Java" },
-    { nome: "Finire gli esercizi React" },
-    { nome: "Allenamento ore 19:00" },
-    { nome: "Dormire" }
-  ]
+  const [listaCoseDaFare, oohAggiorna] = useState([
+  ])
 
   const [inputUtente, inserisciInputUtente] = useState();
 
@@ -16,6 +11,12 @@ function App() {
   return (
     <>
       <h1>Realizziamo una "To Do List"</h1>
+
+      <p>
+        {listaCoseDaFare.length > 1 ? 'Ci sono ' : "C'è "} 
+        {listaCoseDaFare.length} 
+        {listaCoseDaFare.length > 1 ? ' elementi' : ' elemento'}
+      </p>
 
       <ul>
       {
@@ -34,8 +35,15 @@ function App() {
           inserisciInputUtente(evento.target.value)
         }}
       />
-      
+
       <button onClick={() => {
+        oohAggiorna([
+          ...listaCoseDaFare,
+          {
+            nome: inputUtente
+          }
+        ])
+        
         console.log(inputUtente)
       }}>Aggiungi alla To Do List</button>
     </>
